@@ -48,7 +48,7 @@ function SinglePage() {
 
   return (
     <ErrorBoundary>
-      <div className="detail">
+      <div className="details">
         <Link to={"/"}>Go Back</Link>
         <h2>Item Details</h2>
         <p>ID: {item?.id}</p>

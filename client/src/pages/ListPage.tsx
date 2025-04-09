@@ -13,6 +13,7 @@ function ListPage() {
 
   const [activeItemId, setActiveItemId] = useState<any>(null);
   const [filteredItems, setFilteredItems] = useState<any[]>([]);
+  const [visibleCount, setVisibleCount] = useState(10);
   const [query, setQuery] = useState<string>("");
 
   // Зависимость для UseMemo забыли
@@ -20,6 +21,11 @@ function ListPage() {
     () => (activeItemId ? activeItemId : "Empty"),
     [activeItemId]
   );
+
+  // Слишком много карточек. Давайте покажем по кусочкам?
+  const clickShowMore = () => {
+    setVisibleCount((prevCount) => prevCount + 5);
+  };
 
   const handleItemClick = (id: any) => {
     setActiveItemId(id);
@@ -68,7 +74,7 @@ function ListPage() {
       <div className="list-container">
         <div className="list">
           {filteredItems.length === 0 && <span>Loading...</span>}
-          {filteredItems.map((item, index) => (
+          {filteredItems.slice(0, visibleCount).map((item, index) => (
             <ListItem
               key={index}
               isactive={activeItemId === item.id}
@@ -78,6 +84,11 @@ function ListPage() {
               onClick={handleItemClick}
             />
           ))}
+        </div>
+        <div className="button-load-more-wrapper">
+          <button className="button-load-more" onClick={() => clickShowMore()}>
+            Load More
+          </button>
         </div>
       </div>
     </div>
