@@ -211,8 +211,24 @@ ul, li {
   overflow-x: hidden;
 }
 
+// ???
 .list-header {
 
+}
+
+.eb-wrapper {
+  height: 100vh;
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.eb-block {
+  border: 2px solid rgb(95 97 110);
+  border-radius: 0.5em;
+  padding: 20px;
+  width: 10em;
 }
 
 .list {
@@ -248,7 +264,9 @@ ul, li {
   }
 }
 
+// А как же overflow: hidden? Без него не сработает.
 .list-item__description {
+  overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
 }
