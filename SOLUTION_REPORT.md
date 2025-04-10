@@ -13,3 +13,5 @@ Proposes:
 - Add multiselect.
 - Mobile variant.
 - Add error catching and caching. Nobody wants to lose all progress due to a bug/BE hickup.
+- Request logic is to be moved elsewhere. I propose /api/
+- Typing needs work, too many <any> casts
